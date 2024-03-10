@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-initdb-config
+data:
+  init.sql: |
+    #CREATE DATABASE IF NOT EXISTS mydata;
+    #USE mydata;
+    #CREATE TABLE friends (id INT, name VARCHAR(256), age INT, gender VARCHAR(3));
+    #INSERT INTO friends VALUES (1, 'Abhijeet', 32, 'm');
+    #INSERT INTO friends VALUES (2, 'Anjali', 29, 'f');
+    #INSERT INTO friends VALUES (3, 'Aayush', 27, 'm');
+    CREATE DATABASE IF NOT EXISTS sales;
+    USE sales;
+    CREATE TABLE `product` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(45) NOT NULL,
+    `brand` varchar(45) NOT NULL,
+    `madein` varchar(45) NOT NULL,
+    `price` float NOT NULL,
+    PRIMARY KEY (`id`)
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;

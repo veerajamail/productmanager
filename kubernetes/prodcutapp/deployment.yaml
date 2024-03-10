@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productmanager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: productmanager
+  template:
+    metadata:
+      labels:
+        app: productmanager
+    spec:
+      containers:
+      - name: productmanager
+        image: janajohny/productmanager:latest
+        ports:
+        - containerPort: 8090
+        env:
+            - name: db_root_password
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: password
+            - name: db_name
+              value: sales
